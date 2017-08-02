@@ -1,6 +1,3 @@
-
-
-
 var style = document.createElement('style');
 style.type = 'text/css';
 style.innerHTML = 'div { padding: 5px; border: solid 1px blue; }';

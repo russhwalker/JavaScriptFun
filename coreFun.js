@@ -1,6 +1,9 @@
 var CoreFun = function () {
 
-    var log = function (text, wrapperType) {
+    var ulMain = document.createElement('ul');
+    document.body.appendChild(ulMain);
+
+    var logWebListItem = function (text, wrapperType) {
         var html = text || '';
         if (wrapperType) {
             var w = document.createElement(wrapperType);
@@ -13,7 +16,9 @@ var CoreFun = function () {
     };
 
     return {
-        log: log
+        WebLog: logWebListItem
     };
 
 }();
+
+CoreFun.webLog('text');

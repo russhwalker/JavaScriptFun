@@ -1,24 +1,20 @@
 
-var ulMain = document.createElement('ul');
-document.body.appendChild(ulMain);
 
-var log = function (text, wrapperType) {
-    var html = text || '';
-    if (wrapperType) {
-        var w = document.createElement(wrapperType);
-        w.innerHTML = html;
-        html = w.outerHTML;
-    }
-    var li = document.createElement('li');
-    li.innerHTML = html;
-    ulMain.appendChild(li);
+var arrowFunction = (text) => {
+    log(text);
 };
+arrowFunction('arrow function works');
 
-var restParamFunc = function (...someArgs) {
-    for(var i = 0; i < someArgs.length; i++){
-        var arg = someArgs[i];
-        log(arg);
+var nonDefinedArguments = function () {
+    var output = '';
+    for (var i = 0; i < arguments.length; i++) {
+        output += arguments[i] + ' ';
     }
+    CoreFun.WebLog(output);
 };
+nonDefinedArguments(1, 'test', 3, { id: 1 });
 
-restParamFunc(1,2,"got it",4,5);
+var restParameters = function (...someArgs) {
+    CoreFun.WebLog(someArgs.join(' '));
+};
+restParameters(1, 2, "test", 4, { id: 1 });
