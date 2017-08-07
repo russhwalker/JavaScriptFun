@@ -20,5 +20,3 @@ var CoreFun = function () {
     };
 
 }();
-
-CoreFun.webLog('text');
