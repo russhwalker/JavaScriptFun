@@ -1,38 +1,82 @@
 /******************************************************************************************** */
-var printItems = function (arr) {
-    for (var i = 0; i < arr.length; i++) {
-        CoreFun.WebLog(arr[i]);
+var arrNumbers = [1, 2, 3];
+
+var printArray = function (arr, sameLine) {
+    //ES2015
+    for (let i of arr) {
+        CoreFun.Log(i);
+    }
+    if (sameLine !== true) {
+        CoreFun.LogBreak();
     }
 };
-var arrNumbers = [1, 2];
-var arrObjects = [{ id: 1, name: 'a' }, { id: 2, name: 'b' }];
-var arrMixed = [{ id: 1, name: 'a' }, 4, 'some text'];
+
+var printArrayForEach = function (arr) {
+    //ES2015
+    arr.forEach(function (i) {
+        CoreFun.Log(i);
+    });
+    CoreFun.LogBreak();
+};
+
+var arrayOperators = function () {
+    var arr = [1, 2];
+    arr.push(3);
+    var last = arr.pop();
+    printArray(arr);
+};
+
+var arrayMappingNumbers = function () {
+    var arr = [1, 2, 3, 4, 5, 6];
+    printArray(arr);
+    var arrFiltered = arr.filter(function (x) {
+        return x % 2 === 0;
+    });
+    printArray(arrFiltered);
+};
+
+var arrayMappingObjects = function () {
+    var arr = [
+        {
+            id: 1,
+            firstname: 'John',
+            lastname: 'Doe'
+        },
+        {
+            id: 2,
+            firstname: 'Jane',
+            lastname: 'Doe'
+        },
+        {
+            id: 3,
+            firstname: 'John',
+            lastname: 'Smith'
+        }];
+    printArray(arr);
+    var arrFiltered = arr.filter(function (x) {
+        return x.firstname === 'John';
+    });
+    printArray(arrFiltered);
+};
+
 /******************************************************************************************** */
-CoreFun.WebLog('Arrays', 'strong');
-/******************************************************************************************** */
-CoreFun.WebLog('1.', 'strong');
-CoreFun.WebLog(arrNumbers);
-arrNumbers.forEach(function (i) {
-    CoreFun.WebLog(i);
-});
-/******************************************************************************************** */
-CoreFun.WebLog('2.', 'strong');
-CoreFun.WebLog(arrObjects);
-CoreFun.WebLog(JSON.stringify(arrObjects));
-/******************************************************************************************** */
-CoreFun.WebLog('3.', 'strong');
-CoreFun.WebLog(arrMixed);
-/******************************************************************************************** */
-CoreFun.WebLog('4.', 'strong');
-for (var i in { id: 1, name: 'a' }) {
-    CoreFun.WebLog(i);
-}
-/******************************************************************************************** */
-//ES2015
-CoreFun.WebLog('5.', 'strong');
-for (let i of arrNumbers) {
-    CoreFun.WebLog(i);
-}
+CoreFun.LogLine();
+printArray(arrNumbers);
+CoreFun.LogLine();
+printArrayForEach(arrNumbers);
+CoreFun.LogLine();
+arrayOperators();
+CoreFun.LogLine();
+arrayMappingNumbers();
+CoreFun.LogLine();
+arrayMappingObjects();
+CoreFun.LogLine();
+
+
+
+
+
+
 /******************************************************************************************** */
 CoreFun.WebLog('6.', 'strong');
 var arr1 = [1, 2];
