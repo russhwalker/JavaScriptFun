@@ -3,9 +3,10 @@ var arrNumbers = [1, 2, 3];
 
 var printArray = function (arr, sameLine) {
     //ES2015
-    for (let i of arr) {
+    /*for (let i of arr) {
         CoreFun.Log(i);
-    }
+    }*/
+    CoreFun.Log(JSON.stringify(arr));
     if (sameLine !== true) {
         CoreFun.LogBreak();
     }
@@ -19,14 +20,36 @@ var printArrayForEach = function (arr) {
     CoreFun.LogBreak();
 };
 
+var arraySorting = function () {
+    var arr = ['d', 'z', 'm', 'a'];
+    printArray(arr);
+    printArray(arr.sort());
+    var arrNumber = [3, 0, 12, 7, 9];
+    printArray(arrNumber);
+    var arrNumberSorted = arrNumber.sort(function (a, b) {
+        return a - b;
+    });
+    printArray(arrNumberSorted);
+};
+
 var arrayOperators = function () {
-    var arr = [1, 2];
-    arr.push(3);
+    var arr = ['a', 'b', 'c', 'd'];
+    arr.push('e');
     var last = arr.pop();
+    CoreFun.Log(arr.join('~~~') + '   last: ' + last);
+    CoreFun.LogBreak();
+};
+
+var arraySpliceSlice = function () {
+    var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+    printArray(arr);
+    arr.splice(1, 2);
+    printArray(arr);
+    arr.splice(1, 0, 'x', 'y', 'z');
     printArray(arr);
 };
 
-var arrayMappingNumbers = function () {
+var arrayFilteringNumbers = function () {
     var arr = [1, 2, 3, 4, 5, 6];
     printArray(arr);
     var arrFiltered = arr.filter(function (x) {
@@ -35,7 +58,7 @@ var arrayMappingNumbers = function () {
     printArray(arrFiltered);
 };
 
-var arrayMappingObjects = function () {
+var arrayFilteringObjects = function () {
     var arr = [
         {
             id: 1,
@@ -59,68 +82,69 @@ var arrayMappingObjects = function () {
     printArray(arrFiltered);
 };
 
+var arrayMapping = function () {
+    var arr = [1, 2, 3, 4, 5, 6];
+    printArray(arr);
+    var arrMapped = arr.map(function (x) {
+        return x * 2;
+    });
+    printArray(arrMapped);
+
+    var arrMappedObjects = arr.map(function (x) {
+        return {
+            id: x,
+            square: x * x
+        };
+    });
+    printArray(arrMappedObjects);
+};
+
+var arrayReduce = function () {
+    var arrayMultiDim = [[1, 1], [1, 2], [1, 3]];
+    printArray(arrayMultiDim);
+    var arrayMultiDimReduced = arrayMultiDim.reduce(function (a, b) {
+        return a.concat(b);
+    });
+    printArray(arrayMultiDimReduced);
+};
+
+var arrayFind = function () {
+    var arr = [1, 2, 4, 6, 7, 14];
+    var isEven = (x) => { return (x % 2) === 0; };
+    var result = arr.find(isEven);
+    CoreFun.Log(result);
+};
+
+var arrayIncludes = function () {
+
+};
+
 /******************************************************************************************** */
 CoreFun.LogLine();
 printArray(arrNumbers);
 CoreFun.LogLine();
 printArrayForEach(arrNumbers);
 CoreFun.LogLine();
+arraySorting();
+CoreFun.LogLine();
 arrayOperators();
 CoreFun.LogLine();
-arrayMappingNumbers();
+arraySpliceSlice();
 CoreFun.LogLine();
-arrayMappingObjects();
+arrayFilteringNumbers();
+CoreFun.LogLine();
+arrayFilteringObjects();
+CoreFun.LogLine();
+arrayMapping();
+CoreFun.LogLine();
+arrayReduce();
+CoreFun.LogLine();
+arrayFind();
+CoreFun.LogLine();
+arrayIncludes();
 CoreFun.LogLine();
 
 
-
-
-
-
-/******************************************************************************************** */
-CoreFun.WebLog('6.', 'strong');
-var arr1 = [1, 2];
-arr1.push(3);
-CoreFun.WebLog(arr1);
-var lastElement = arr1.pop();
-CoreFun.WebLog(arr1);
-CoreFun.WebLog(arr1.join('~~~'));
-/******************************************************************************************** */
-CoreFun.WebLog('7.', 'strong');
-var arr2 = ['a', 'b', 'c', 'd'];
-CoreFun.WebLog(arr2);
-arr2.splice(1, 2);
-CoreFun.WebLog(arr2);
-arr2.splice(1, 0, 'x', 'y');
-CoreFun.WebLog(arr2);
-var arrSliced = arr2.slice(0, 2);
-CoreFun.WebLog(arrSliced);
-/******************************************************************************************** */
-CoreFun.WebLog('8.', 'strong');
-var arr3 = [1, 2, 3, 4, 5];
-CoreFun.WebLog(arr3);
-var arrFiltered = arr3.filter(function (x) {
-    return x === 1 || x === 3;
-});
-CoreFun.WebLog(arrFiltered);
-var arrMapped = arr3.map(function (x) {
-    return x * 2;
-});
-CoreFun.WebLog(arrMapped);
-/******************************************************************************************** */
-CoreFun.WebLog('9.', 'strong');
-CoreFun.WebLog(['c', 'b', 'q', 'a'].sort());
-var arr4 = [3, 47, 1, 5, 2];
-CoreFun.WebLog(arr4.sort());//wrong, sort with no function is only for strings
-CoreFun.WebLog(arr4.sort(function (a, b) {
-    return a - b;
-}));
-var arr5 = [{ id: 27, price: 15.45 }, { id: 3, price: 12.5 }, { id: 12, price: 3.25 }];
-CoreFun.WebLog(JSON.stringify(arr5));
-var arr5Sorted = arr5.sort(function (a, b) {
-    return parseFloat(a.price) - parseFloat(b.price);
-});
-CoreFun.WebLog(JSON.stringify(arr5Sorted));
 /******************************************************************************************** */
 CoreFun.WebLog('10.', 'strong');
 CoreFun.WebLog([1, 2, 3, 7, 10].reduce(function (a, b) {
