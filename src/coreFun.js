@@ -1,50 +1,40 @@
 var CoreFun = function () {
 
-    var ulMain = document.createElement('ul');
-    document.body.appendChild(ulMain);
-
     var textArea = document.createElement('textarea');
     textArea.style.width = "1000px";
     textArea.style.height = "1000px";
     document.body.appendChild(textArea);
 
-    var logWebListItem = function (text, wrapperType) {
-        var html = text || '';
-        if (wrapperType) {
-            var w = document.createElement(wrapperType);
-            w.innerHTML = html;
-            html = w.outerHTML;
+    var print = function (input, sameLine) {
+        if (Array.isArray(input) || typeof input === 'object') {
+            textArea.value += JSON.stringify(input);
+        } else {
+            input = '' + input;
+            textArea.value += input;
         }
-        var li = document.createElement('li');
-        li.innerHTML = html;
-        ulMain.appendChild(li);
+        if (sameLine !== true) {
+            printBreak();
+        }
     };
 
-    var log = function (val) {
-        if (typeof val === 'object') {
-            textArea.value += JSON.stringify(val);
-        } else {
-            val = '' + val;
-            textArea.value += val;
-        }
+    var printHeading = function (input) {
+        textArea.value += '||||||||||' + input + '|||||||||||||||||||||||||||||||||||||||||||||||||||||||||';
+        printBreak();
     };
-    var logBreak = function () {
+
+    var printBreak = function () {
         textArea.value += '\n';
     };
-    var logSpace = function () {
-        textArea.value += '  ';
-    };
-    var logLine = function () {
-        textArea.value += '----------------------------------------------------';
-        logBreak();
+    var printLine = function () {
+        textArea.value += '------------------------------------------';
+        printBreak();
     };
 
     return {
-        WebLog: logWebListItem,
-        Log: log,
-        LogBreak: logBreak,
-        LogSpace: logSpace,
-        LogLine: logLine
+        PrintHeading: printHeading,
+        Print: print,
+        PrintLine: printLine,
+        PrintBreak: printBreak
     };
 
 }();
