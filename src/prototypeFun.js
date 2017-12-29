@@ -1,7 +1,7 @@
 CoreFun.PrintHeading('prototypeFun.js');
 
 (function () {
-    CoreFun.Print('1.', 'strong');
+    CoreFun.PrintLine();
     var myObject = function () {
     };
     myObject.sayName1 = function () {
@@ -15,7 +15,7 @@ CoreFun.PrintHeading('prototypeFun.js');
     CoreFun.Print(new myObject().sayName2());
 
 
-    CoreFun.Print('2.', 'strong');
+    CoreFun.PrintLine();
     function myObject2() {
         this.nameText = 'my name';
     }
@@ -29,6 +29,6 @@ CoreFun.PrintHeading('prototypeFun.js');
     //CoreFun.Print(myObject2.sayName2());//exception
     CoreFun.Print(new myObject2().sayName2());
 
-    CoreFun.Print('3.', 'strong');
+    CoreFun.PrintLine();
 
 })();
