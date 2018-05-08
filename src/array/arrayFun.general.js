@@ -68,7 +68,7 @@ CoreFun.PrintHeading('arrayFun.general.js');
 
     var arrayEvery = function () {
         CoreFun.Print('--EVERY--');
-        
+
         var runEveryIsEven = function (x) {
             return (x % 2) === 0;
         };
@@ -80,6 +80,18 @@ CoreFun.PrintHeading('arrayFun.general.js');
         var arr2 = [2, 6, 74, 99];
         CoreFun.Print(arr2);
         CoreFun.Print(arr2.every(runEveryIsEven));
+    };
+
+    var arrayIndexOf = function () {
+        CoreFun.Print('--INDEXOF--');
+
+        var arr1 = ['a', 'b', 'c', 'd'];
+        CoreFun.Print(arr1);
+        CoreFun.Print(arr1.indexOf('c'));
+
+        var arr2 = 'a,b,c,d'.split(',');
+        CoreFun.Print(arr2);
+        CoreFun.Print(arr2.indexOf('c'));
     };
 
     CoreFun.PrintLine();
@@ -98,6 +110,8 @@ CoreFun.PrintHeading('arrayFun.general.js');
     arrayFill();
     CoreFun.PrintLine();
     arrayEvery();
+    CoreFun.PrintLine();
+    arrayIndexOf();
     CoreFun.PrintLine();
 
     CoreFun.PrintBreak();
