@@ -20,7 +20,6 @@ CoreFun.PrintHeading('closureFun.js');
     };
     closureFuncCallsInnerMethod();
 
-
     CoreFun.PrintLine();
     var closureFuncReturnsReferenceToFunction = function () {
         var go = function () {

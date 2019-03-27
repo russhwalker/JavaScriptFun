@@ -5,29 +5,37 @@ var CoreFun = function () {
     textArea.style.height = "1000px";
     document.body.appendChild(textArea);
 
-    var print = function (input, sameLine) {
-        if (Array.isArray(input) || typeof input === 'object') {
-            textArea.value += JSON.stringify(input);
+    var print = function () {
+        for (var i = 0; i < arguments.length; i++) {
+            var arg = arguments[i];
+            if (Array.isArray(arg) || typeof arg === 'object') {
+                textArea.value += JSON.stringify(arg, undefined, 1);
+            } else {
+                arg = '' + arg;
+                textArea.value += arg;
+            }
+        }
+        printBreak();
+    };
+
+    var printLine = function (heading) {
+        if (heading) {
+            textArea.value += '-----------' + heading + '-----------------';
         } else {
-            input = '' + input;
-            textArea.value += input;
+            textArea.value += '------------------------------------------';
         }
-        if (sameLine !== true) {
-            printBreak();
-        }
+        printBreak();
     };
 
     var printHeading = function (input) {
+        printLine();
         textArea.value += '||||||||||' + input + '|||||||||||||||||||||||||||||||||||||||||||||||||||||||||';
         printBreak();
+        printLine();
     };
 
     var printBreak = function () {
         textArea.value += '\n';
-    };
-    var printLine = function () {
-        textArea.value += '------------------------------------------';
-        printBreak();
     };
 
     return {

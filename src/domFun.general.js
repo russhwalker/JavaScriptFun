@@ -1,4 +1,4 @@
-CoreFun.PrintHeading('functionFun.js');
+CoreFun.PrintHeading('domFun.general.js');
 
 (function () {
 
