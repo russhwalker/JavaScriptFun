@@ -1,11 +1,8 @@
 
 onmessage = function (e) {
-  let result = e.data[0] * e.data[1];
-
-  if (isNaN(result)) {
-    postMessage('Please write two numbers');
-  } else {
-    let workerResult = 'Result: ' + result;
-    postMessage(workerResult);
+  for (let index = e.data[0]; index <= e.data[1]; index++) {
+    setTimeout(() => {
+      postMessage(index);
+    }, index * 300);    
   }
 }
