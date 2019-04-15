@@ -59,3 +59,17 @@ CoreFun.PrintHeading('closureFun.js');
     cf2(3);//5
     cf2(3);//8
 })();
+
+
+(function () {
+    CoreFun.PrintLine();
+    function doSomething(a) {
+        function doSomethingElse(a) {
+            return a - 1;
+        }
+        var b;
+        b = a + doSomethingElse(a * 2);
+        CoreFun.Print(b * 3);
+    }
+    doSomething(2);
+})();
