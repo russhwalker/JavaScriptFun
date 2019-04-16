@@ -5,17 +5,17 @@ CoreFun.PrintHeading('prototypeFun.js');
 
     var myObject = function () {
         this.someString = 'something';
-    };    
+    };
     myObject.sayName1 = function () {
         return "name 1";
     };
     myObject.prototype.sayName2 = function () {
         return "name 2";
     };
-    
+
     CoreFun.Print(myObject.sayName1());
     //CoreFun.Print(myObject.sayName2());//exception
-    CoreFun.Print(new myObject().sayName2());    
+    CoreFun.Print(new myObject().sayName2());
 
     CoreFun.PrintLine('Proto Property new');
     CoreFun.Print(new myObject().prototype);
@@ -25,7 +25,7 @@ CoreFun.PrintHeading('prototypeFun.js');
     CoreFun.Print(myObject.__proto__);
 
     CoreFun.PrintHeading('Object 2');
-    
+
     function myObject2() {
         this.nameText = 'name';
     }
@@ -42,8 +42,15 @@ CoreFun.PrintHeading('prototypeFun.js');
     CoreFun.PrintLine('Proto Property new');
     CoreFun.Print(new myObject2().prototype);
     CoreFun.Print(new myObject2().__proto__);
+    
     CoreFun.PrintLine('Proto Property');
     CoreFun.Print(myObject2.prototype);
-    CoreFun.Print(myObject2.__proto__);    
+    CoreFun.Print(myObject2.__proto__);
+
+    CoreFun.PrintLine();
+    function test() {
+    }
+    var t = new test();
+    CoreFun.Print(Object.getPrototypeOf(t) === test.prototype);
 
 })();

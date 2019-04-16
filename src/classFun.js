@@ -6,13 +6,15 @@ CoreFun.PrintHeading('classFun.js');
         constructor(name) {
             this.name = name;
         }
+        bark() {
+            CoreFun.Print('~~~~~~~~~~~~~~~~~~~~~~ruff~~~~~~~~~~~~~~~~~~~~~~');
+        }
     }
 
     class Park {
         constructor() {
             this.parkName = 'my dog park';
             this.dogs = [
-                new Dog("fido"),
                 new Dog("roxie")
             ];
         }
@@ -21,9 +23,14 @@ CoreFun.PrintHeading('classFun.js');
         }
     }
 
+    var spotDog = new Dog("spot");
+    CoreFun.Print(spotDog);
+    spotDog.bark();
+
+    CoreFun.PrintLine();
+
     var park = new Park();
+    park.addNew(spotDog);
     CoreFun.Print(park);
 
-    park.addNew(new Dog("spot"));
-    CoreFun.Print(park);
 })();
